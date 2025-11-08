@@ -91,7 +91,7 @@ const Challenges = () => {
             <p>Your support helps us provide solutions and create lasting change in the lives of Zimbabwean girls</p>
             <div className="cta-buttons">
               <a href="#solution" className="btn">See Our Solutions</a>
-              <a href="#funding" className="btn btn-secondary">Support Our Work</a>
+              <a href="#contact" className="btn btn-secondary">Support Our Work</a>
             </div>
           </div>
         </div>

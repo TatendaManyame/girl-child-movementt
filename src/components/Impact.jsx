@@ -16,7 +16,7 @@ const useCountUp = (end, duration = 2000, start = 0) => {
             if (!startTime) startTime = currentTime;
             const progress = Math.min((currentTime - startTime) / duration, 1);
             
-            // Easing function for smooth animation
+            // Easing function
             const easeOutQuart = 1 - Math.pow(1 - progress, 4);
             const currentCount = Math.floor(easeOutQuart * (end - start) + start);
             
@@ -63,7 +63,7 @@ const Impact = () => {
     {
       icon: <FaUsers />,
       value: `${girlsReached.toLocaleString()}+`,
-      description: "Girls reached and supported",
+      description: "Girls to be reached and supported",
       ref: girlsRef
     },
     {
@@ -92,10 +92,13 @@ const Impact = () => {
                   </div>
                   <div className="icon-pulse"></div>
                 </div>
+
                 <div className="impact-value" data-value={impact.value.replace('+', '').replace('%', '')}>
                   {impact.value}
                 </div>
+
                 <div className="impact-description">{impact.description}</div>
+
                 <div className="impact-bar">
                   <div 
                     className="impact-progress" 
@@ -105,28 +108,12 @@ const Impact = () => {
                     }}
                   ></div>
                 </div>
+
               </div>
             </div>
           ))}
         </div>
 
-        {/* Additional Impact Info */}
-        <div className="impact-extra">
-          <div className="impact-features">
-            <div className="impact-feature">
-              <div className="feature-dot"></div>
-              <span>100+ schools partnered</span>
-            </div>
-            <div className="impact-feature">
-              <div className="feature-dot"></div>
-              <span>50 communities reached</span>
-            </div>
-            <div className="impact-feature">
-              <div className="feature-dot"></div>
-              <span>3 years of impact</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

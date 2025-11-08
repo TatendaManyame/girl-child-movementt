@@ -5,9 +5,10 @@ const Hero = () => {
 
   // Background images array - using local image names
   const backgroundImages = [
-    '/images/girlchild two.jpg', 
+    '/images/ggg.png', 
     '/images/girlchild.jpg',
-    '/images/girlchild.jpg',
+    '/images/child.jpg',
+    
   ];
 
   // Rotate background images every 5 seconds
@@ -34,10 +35,10 @@ const Hero = () => {
       
       <div className="container">
         <h1>Empowering Zimbabwean Girls for a Brighter Future</h1>
-        <p>A vision-driven NGO dedicated to improving the lives of Zimbabwean girls through education, health, and community support.</p>
+        <p>A vision-driven,dedicated to improving the lives of Zimbabwean girls through education, health, and community support.</p>
         <div className="hero-buttons">
           <a href="#solution" className="btn">Our Programs</a>
-          <a href="#funding" className="btn btn-secondary">Support Our Cause</a>
+          <a href="#contact" className="btn btn-secondary">Support Our Cause</a>
         </div>
       </div>
     </section>

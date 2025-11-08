@@ -7,6 +7,7 @@ import Solution from './components/Solutions';
 import Impact from './components/Impact';
 import Roadmap from './components/Roadmap';
 import Team from './components/Team';
+import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Impact />
       <Roadmap />
       <Team />
+      <ContactUs />
       <Footer />
     </div>
   );

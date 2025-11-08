@@ -31,7 +31,7 @@ const Header = () => {
               <li><a href="#impact" onClick={closeMenu}>Impact</a></li>
               <li><a href="#roadmap" onClick={closeMenu}>Roadmap</a></li>
               <li><a href="#team" onClick={closeMenu}>Team</a></li>
-              <li><a href="#funding" className="btn" onClick={closeMenu}>Donate</a></li>
+              <li><a href="#contact" className="btn" onClick={closeMenu}>Contact</a></li>
             </ul>
           </nav>
 
@@ -50,7 +50,7 @@ const Header = () => {
               <li><a href="#impact" onClick={closeMenu}>Impact</a></li>
               <li><a href="#roadmap" onClick={closeMenu}>Roadmap</a></li>
               <li><a href="#team" onClick={closeMenu}>Team</a></li>
-              <li><a href="#funding" className="btn" onClick={closeMenu}>Donate</a></li>
+              <li><a href="#contact" className="btn" onClick={closeMenu}>Contact</a></li>
             </ul>
           </nav>
 
