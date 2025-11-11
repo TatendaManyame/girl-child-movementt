@@ -59,8 +59,9 @@ const Footer = () => {
             <div className="footer-column">
               <h4 className="footer-title">Contact</h4>
               <div className="contact-info">
-                <p>info@girlchildmovement.org</p>
-                <p>+263 123 456 789</p>
+                <p>info.girlchildmovement@gmail.com</p>
+                <p>+971585729748</p>
+                  <p>+971585213270</p>
                 <p>Harare, Zimbabwe</p>
               </div>
             </div>

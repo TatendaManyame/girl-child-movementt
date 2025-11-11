@@ -94,7 +94,7 @@ const ContactUs = () => {
                 </div>
                 <div className="info-content">
                   <h3>Our Location</h3>
-                  <p>123 Empowerment Street<br />Harare, Zimbabwe</p>
+                  <p>WH 42 <br /> Street 5B Al Quoz Ind 1 <br /> Dubai,UAE</p>
                 </div>
               </div>
               
@@ -104,7 +104,8 @@ const ContactUs = () => {
                 </div>
                 <div className="info-content">
                   <h3>Phone Number</h3>
-                  <p>+263 123 456 789</p>
+                  <p>+971585729748</p>
+                  <p>+971585213270</p>
                 </div>
               </div>
               
@@ -114,17 +115,13 @@ const ContactUs = () => {
                 </div>
                 <div className="info-content">
                   <h3>Email Address</h3>
-                  <p>contact@girlchildmovement.org</p>
+                  <p>info.girlchildmovement@gmail.com</p>
                 </div>
               </div>
               
               <div className="info-item" data-aos="fade-up" data-aos-delay="400">
                 <div className="info-icon-wrapper">
                   <FaClock className="info-icon" />
-                </div>
-                <div className="info-content">
-                  <h3>Working Hours</h3>
-                  <p>Monday - Friday: 8:00 - 17:00<br />Saturday: 9:00 - 13:00</p>
                 </div>
               </div>
             </div>
