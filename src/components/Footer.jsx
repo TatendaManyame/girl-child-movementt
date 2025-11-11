@@ -62,7 +62,7 @@ const Footer = () => {
                 <p>info.girlchildmovement@gmail.com</p>
                 <p>+971585729748</p>
                   <p>+971585213270</p>
-                <p>Harare, Zimbabwe</p>
+                <p>Dubai, UAE</p>
               </div>
             </div>
           </div>

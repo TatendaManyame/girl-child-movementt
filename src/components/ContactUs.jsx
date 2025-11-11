@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaPaperPlane, FaUser, FaEnvelopeOpen, FaLightbulb } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaPaperPlane, FaUser, FaEnvelopeOpen, FaLightbulb, FaCheck } from 'react-icons/fa';
+import { useForm, ValidationError } from '@formspree/react';
 import './ContactUs.css';
 
 const ContactUs = () => {
+  const [state, handleSubmit] = useForm("xldaenbr");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Create floating elements
@@ -39,36 +39,94 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log('Form submitted:', formData);
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    
-    setIsSubmitting(false);
-    
-    // Show success message
-    const btn = e.target.querySelector('.submit-btn');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<FaPaperPlane /> Message Sent!';
-    btn.classList.add('success');
-    
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.classList.remove('success');
-    }, 3000);
-  };
+  // Success state - show success message
+  if (state.succeeded) {
+    return (
+      <section id="contact" className="contact-section">
+        <div className="contact-container">
+          <div className="contact-title-section">
+            <h2 className="contact-main-title">Contact Us</h2>
+            <p className="contact-subtitle">Get in touch with The Girl Child Movement. We're here to help and support.</p>
+          </div>
+          
+          <div className="contact-content">
+            <div className="contact-info-side">
+              <div className="info-header">
+                <h2>Let's Start a Conversation</h2>
+                <p>We're here to help and answer any questions you might have. We look forward to hearing from you.</p>
+              </div>
+              
+              <div className="contact-info-grid">
+                <div className="info-item" data-aos="fade-up" data-aos-delay="100">
+                  <div className="info-icon-wrapper">
+                    <FaMapMarkerAlt className="info-icon" />
+                  </div>
+                  <div className="info-content">
+                    <h3>Our Location</h3>
+                    <p>WH 42 <br /> Street 5B Al Quoz Ind 1 <br /> Dubai,UAE</p>
+                  </div>
+                </div>
+                
+                <div className="info-item" data-aos="fade-up" data-aos-delay="200">
+                  <div className="info-icon-wrapper">
+                    <FaPhone className="info-icon" />
+                  </div>
+                  <div className="info-content">
+                    <h3>Phone Number</h3>
+                    <p>+971585729748</p>
+                    <p>+971585213270</p>
+                  </div>
+                </div>
+                
+                <div className="info-item" data-aos="fade-up" data-aos-delay="300">
+                  <div className="info-icon-wrapper">
+                    <FaEnvelope className="info-icon" />
+                  </div>
+                  <div className="info-content">
+                    <h3>Email Address</h3>
+                    <p>info.girlchildmovement@gmail.com</p>
+                  </div>
+                </div>
+                
+                <div className="info-item" data-aos="fade-up" data-aos-delay="400">
+                  <div className="info-icon-wrapper">
+                    <FaClock className="info-icon" />
+                  </div>
+                  <div className="info-content">
+                    <h3>Office Hours</h3>
+                    <p>Mon - Fri: 9AM - 6PM<br />Sat: 10AM - 2PM</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="info-cta">
+                <FaLightbulb className="cta-icon" />
+                <p>Have an urgent inquiry?<br />We typically respond within 2 hours during business days.</p>
+              </div>
+            </div>
+
+            {/* Success Message Side */}
+            <div className="contact-form-side success-message">
+              <div className="success-content">
+                <div className="success-icon">
+                  <FaCheck />
+                </div>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for contacting us. We've received your message and will get back to you within 24 hours.</p>
+                <button 
+                  className="submit-btn success"
+                  onClick={() => window.location.reload()}
+                >
+                  <FaPaperPlane className="btn-icon" />
+                  Send Another Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="contact-section">
@@ -123,6 +181,10 @@ const ContactUs = () => {
                 <div className="info-icon-wrapper">
                   <FaClock className="info-icon" />
                 </div>
+                <div className="info-content">
+                  <h3>Office Hours</h3>
+                  <p>Mon - Fri: 9AM - 6PM<br />Sat: 10AM - 2PM</p>
+                </div>
               </div>
             </div>
             
@@ -145,13 +207,21 @@ const ContactUs = () => {
                   <FaUser className="input-icon" />
                   <input
                     type="text"
+                    id="name"
                     name="name"
                     placeholder="Your Full Name"
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    disabled={state.submitting}
                   />
                 </div>
+                <ValidationError 
+                  prefix="Name" 
+                  field="name"
+                  errors={state.errors}
+                  className="validation-error"
+                />
               </div>
               
               <div className="form-group" data-aos="fade-up" data-aos-delay="150">
@@ -159,25 +229,33 @@ const ContactUs = () => {
                   <FaEnvelopeOpen className="input-icon" />
                   <input
                     type="email"
+                    id="email"
                     name="email"
                     placeholder="Your Email Address"
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    disabled={state.submitting}
                   />
                 </div>
+                <ValidationError 
+                  prefix="Email" 
+                  field="email"
+                  errors={state.errors}
+                  className="validation-error"
+                />
               </div>
               
               <div className="form-group" data-aos="fade-up" data-aos-delay="200">
                 <div className="input-wrapper">
-                  <FaLightbulb className="input-icon" />
                   <input
                     type="text"
+                    id="subject"
                     name="subject"
-                    placeholder="Message Subject"
+                    placeholder="Subject (Optional)"
                     value={formData.subject}
                     onChange={handleChange}
-                    required
+                    disabled={state.submitting}
                   />
                 </div>
               </div>
@@ -185,22 +263,30 @@ const ContactUs = () => {
               <div className="form-group" data-aos="fade-up" data-aos-delay="250">
                 <div className="input-wrapper">
                   <textarea
+                    id="message"
                     name="message"
-                    placeholder="Tell us about your inquiry or project..."
+                    placeholder="Tell us about your inquiry..."
                     rows="5"
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    disabled={state.submitting}
                   ></textarea>
                 </div>
+                <ValidationError 
+                  prefix="Message" 
+                  field="message"
+                  errors={state.errors}
+                  className="validation-error"
+                />
               </div>
               
               <button 
                 type="submit" 
-                className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
-                disabled={isSubmitting}
+                className={`submit-btn ${state.submitting ? 'submitting' : ''}`}
+                disabled={state.submitting}
               >
-                {isSubmitting ? (
+                {state.submitting ? (
                   <>
                     <div className="spinner"></div>
                     Sending...
